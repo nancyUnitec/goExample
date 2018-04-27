@@ -40,8 +40,10 @@ func testDecoder(){
 
 }
 
+//struct to json
 func testMarshal(){
-	type ColorGroup struct { 
+    fmt.Printf ( "mmmmmmmmmmmmmmmmmmmarshal \n" ) 
+    type ColorGroup struct { 
         ID     int 
         Name   string 
         Colors [ ] string 
@@ -56,10 +58,13 @@ func testMarshal(){
         fmt. Println ( "error:" , err ) 
     } 
     os. Stdout . Write ( b ) 
+    //output is a json format: {"ID":1,"Name":"Reds","Colors":["Crimson","Red","Ruby","Maroon"]}
 }
 
+//json to struct
 func testUnMarshal(){
-	var jsonBlob = [ ] byte ( ` [ 
+    fmt.Printf ( "\n uuuuuuuuuuuuunmarshal \n" ) 
+    var jsonBlob = [ ] byte ( ` [ 
         { "Name" : "Platypus" , "Order" : "Monotremata" } , 
         { "Name" : "Quoll" ,     "Order" : "Dasyuromorphia" } 
     ] ` ) 
@@ -72,7 +77,8 @@ func testUnMarshal(){
     if err != nil { 
         fmt. Println ( "error:" , err ) 
     } 
-    fmt. Printf ( "%+v" , animals ) 
+    fmt.Printf ( "%+v" , animals ) 
+    //output: [{Name:Platypus Order:Monotremata} {Name:Quoll Order:Dasyuromorphia}]
 }
 /*Printf someting*/  
 func main(){   
